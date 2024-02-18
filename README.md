@@ -44,6 +44,8 @@ Kinvault.md is a markdown editor app for kinnies.
          emulator -list-avds`
          ```
 1. Install watchman.
+   Expo depends watchman.
+
    ```fish
    brew install watchman
    ```
@@ -60,6 +62,8 @@ Kinvault.md is a markdown editor app for kinnies.
 1. start expo
    ```shell
    cd kinvault
-   npx start expo
-   npx expo login
+   npm start
    ```
+## Other installation.
+1. TODO: tamagui
+2. 
