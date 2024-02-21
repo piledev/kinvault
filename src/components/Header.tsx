@@ -13,7 +13,7 @@ const Header = (): JSX.Element => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'gray',
+    backgroundColor: '#586878',
     height: 104,
     justifyContent: 'flex-end'
   },
