@@ -1,6 +1,8 @@
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
+// Ref. https://oblador.github.io/react-native-vector-icons/
+import { FontAwesome5 } from '@expo/vector-icons'
 
 const Detail = (): JSX.Element => {
   return (
@@ -25,7 +27,9 @@ const Detail = (): JSX.Element => {
           aaaaa.
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }}>+</CircleButton>
+      <CircleButton style={{ top: 160, bottom: 'auto' }}>
+        <FontAwesome5 name='pen' size={25} />
+      </CircleButton>
     </View>
   )
 }

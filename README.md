@@ -70,12 +70,18 @@ Kinvault.md is a markdown editor app for kinnies.
       ```shell
       npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler
       ```
-   2. Add the following files.
+   2. Add the following.
       1. src/app/index.tsx
       1. src/app/_layout.tsx
-   3. Delete the following file.
+   3. Delete the following.
       1. App.tsx
    4. Add `"expo": {"scheme": "kinvault"}` into app.json
+
+1. Install vector-icons.
+   1. Execute the following.
+   ```shell
+   npx expo install @expo/vector-icons
+   ```
 
 ## Other installation.
 1. TODO: install tamagui
