@@ -83,6 +83,8 @@ Kinvault.md is a markdown editor app for kinnies.
    npx expo install @expo/vector-icons
    npx expo install expo-font
    ```
+   Ref. https://oblador.github.io/react-native-vector-icons/
+
    1. Download font file
       1. Open https://icomoon.io/app/#/select
       2. Select and download font files.

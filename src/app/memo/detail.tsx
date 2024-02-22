@@ -1,8 +1,6 @@
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
-// Ref. https://oblador.github.io/react-native-vector-icons/
-// import { FontAwesome5 } from '@expo/vector-icons'
 import Icon from '../../components/Icon'
 
 const Detail = (): JSX.Element => {
