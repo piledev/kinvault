@@ -22,7 +22,8 @@
     "expo-linking": "~6.2.2",
     "expo-constants": "~15.4.5",
     "react-native-gesture-handler": "~2.14.0",
-    "@expo/vector-icons": "^14.0.0"
+    "@expo/vector-icons": "^14.0.0",
+    "expo-font": "~11.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

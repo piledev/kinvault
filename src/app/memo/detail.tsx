@@ -2,7 +2,8 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 // Ref. https://oblador.github.io/react-native-vector-icons/
-import { FontAwesome5 } from '@expo/vector-icons'
+// import { FontAwesome5 } from '@expo/vector-icons'
+import Icon from '../../components/Icon'
 
 const Detail = (): JSX.Element => {
   return (
@@ -27,8 +28,8 @@ const Detail = (): JSX.Element => {
           aaaaa.
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }}>
-        <FontAwesome5 name='pen' size={25} />
+      <CircleButton style={{ top: 140, bottom: 'auto' }}>
+        <Icon name='quill' size={30} color='#ffffff'/>
       </CircleButton>
     </View>
   )
@@ -40,15 +41,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   memoHeader: {
-    backgroundColor: 'darkgray',
-    height: 96,
+    backgroundColor: '#98a8b8',
+    height: 84,
     paddingVertical: 24,
     paddingHorizontal: 19
   },
   memoItem: {
     color: '#ffffff',
     fontSize: 20,
-    lineHeight: 32,
+    lineHeight: 22,
     fontWeight: 'bold'
   },
   memoDate: {

@@ -14,7 +14,7 @@ const Header = (): JSX.Element => {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#586878',
-    height: 104,
+    height: 94,
     justifyContent: 'flex-end'
   },
   headerInner: {

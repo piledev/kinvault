@@ -77,11 +77,24 @@ Kinvault.md is a markdown editor app for kinnies.
       1. App.tsx
    4. Add `"expo": {"scheme": "kinvault"}` into app.json
 
-1. Install vector-icons.
+1. Install vector-icons and expo-font.
    1. Execute the following.
    ```shell
    npx expo install @expo/vector-icons
+   npx expo install expo-font
    ```
+   1. Download font file
+      1. Open https://icomoon.io/app/#/select
+      2. Select and download font files.
+      3. Create `assets/fonts` folder.
+      4. Cut following and paste into `assets/fonts/`
+         - icomoon.ttf
+         - selection.json
+   1. Declare *.ttf file
+      1. Create file `types/fonts.d.ts` and write following. 
+      ```ts
+      declare module '*.ttf'
+      ```
 
 ## Other installation.
 1. TODO: install tamagui
