@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
-import CustomButton from '../../components/CustomButton'
+import SquareButton from '../../components/SquareButton'
 import CustomInput from '../../components/CustomInput'
 
 const Signup = (): JSX.Element => {
@@ -11,7 +11,7 @@ const Signup = (): JSX.Element => {
         <Text style={styles.title}>Sign up</Text>
         <CustomInput value='Email' />
         <CustomInput value='Password' />
-        <CustomButton label='Submit'/>
+        <SquareButton label='Submit'/>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
           <Text style={styles.footerLink}>Log in here!</Text>

@@ -4,7 +4,7 @@ interface Props {
   label: string
 }
 
-const CustomButton = (props: Props): JSX.Element => {
+const SquareButton = (props: Props): JSX.Element => {
   const { label } = props
 
   return (
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CustomButton
+export default SquareButton
