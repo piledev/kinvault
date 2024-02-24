@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import Header from '../../components/Header'
+
 import SquareButton from '../../components/SquareButton'
 import CustomInput from '../../components/CustomInput'
 import { Link, router } from 'expo-router'
@@ -12,7 +12,6 @@ const handleOnPress = (): void => {
 const Login = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Header/>
       <View style={styles.inner}>
         <Text style={styles.title}>Log in</Text>
         <CustomInput value='Email' />
