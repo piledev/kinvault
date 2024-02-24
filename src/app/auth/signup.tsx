@@ -1,7 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Header from '../../components/Header'
 import SquareButton from '../../components/SquareButton'
 import CustomInput from '../../components/CustomInput'
+import { Link, router } from 'expo-router'
+
+const handleOnPress = (): void => {
+  // TODO: signup
+  router.push('/memo/list')
+}
 
 const Signup = (): JSX.Element => {
   return (
@@ -11,10 +17,14 @@ const Signup = (): JSX.Element => {
         <Text style={styles.title}>Sign up</Text>
         <CustomInput value='Email' />
         <CustomInput value='Password' />
-        <SquareButton label='Submit'/>
+        <SquareButton label='Submit' onPress={handleOnPress}/>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Text style={styles.footerLink}>Log in here!</Text>
+          <Link href='./login' asChild>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>Log in here!</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>

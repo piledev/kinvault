@@ -100,4 +100,4 @@ Kinvault.md is a markdown editor app for kinnies.
 
 ## Other installation.
 1. TODO: install tamagui
-2. 
+2. TODO: What's asChild?

@@ -2,6 +2,11 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import { router } from 'expo-router'
+
+const handleOnPress = (): void => {
+  router.push('/memo/edit')
+}
 
 const Detail = (): JSX.Element => {
   return (
@@ -26,7 +31,7 @@ const Detail = (): JSX.Element => {
           aaaaa.
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 140, bottom: 'auto' }}>
+      <CircleButton style={{ top: 140, bottom: 'auto' }} onPress={handleOnPress}>
         <Icon name='quill' size={30} color='#ffffff'/>
       </CircleButton>
     </View>
