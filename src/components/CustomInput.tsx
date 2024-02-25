@@ -1,15 +1,40 @@
-import { TextInput, StyleSheet, type ViewStyle } from 'react-native'
+import { useState } from 'react'
+import {
+  TextInput, StyleSheet,
+  type ViewStyle, type KeyboardTypeOptions
+} from 'react-native'
 
 interface Props {
-  value: string
+  value?: string
+  placeholder?: string
   style?: ViewStyle
+  keyboardType?: KeyboardTypeOptions
+  secureTextEntry?: boolean
+  textContentType?: 'emailAddress' | 'password'
 }
 
 const CustomInput = (props: Props): JSX.Element => {
-  const { value, style } = props
+  const {
+    value = '',
+    placeholder = '',
+    style,
+    keyboardType,
+    secureTextEntry = false,
+    textContentType
+  } = props
+  const [text, setText] = useState(value)
 
   return (
-    <TextInput style={[styles.input, style]} value={value} />
+    <TextInput
+      style={[styles.input, style]}
+      value={text}
+      onChangeText={setText}
+      placeholder={placeholder}
+      autoCapitalize='none'
+      keyboardType={keyboardType}
+      secureTextEntry={secureTextEntry}
+      textContentType={textContentType}
+      />
   )
 }
 
