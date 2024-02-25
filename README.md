@@ -98,6 +98,13 @@ Kinvault.md is a markdown editor app for kinnies.
       declare module '*.ttf'
       ```
 
+1. Install Firebase.
+
+```shell
+npx expo install firebase @react-native-async-storage/async-storage
+```
+
+
 ## Other installation.
 1. TODO: install tamagui
 2. TODO: What's asChild?
