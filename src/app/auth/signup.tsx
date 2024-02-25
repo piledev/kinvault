@@ -6,7 +6,7 @@ import { Link, router } from 'expo-router'
 
 const handleOnPress = (): void => {
   // TODO: signup
-  router.push('/memo/list')
+  router.replace('/memo/list')
 }
 
 const Signup = (): JSX.Element => {
