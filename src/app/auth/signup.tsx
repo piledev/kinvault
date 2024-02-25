@@ -1,25 +1,39 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Link, router } from 'expo-router'
+import { useState } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 import SquareButton from '../../components/SquareButton'
 import AuthInput from '../../components/AuthInput'
-import { Link, router } from 'expo-router'
+import { auth } from '../../config'
 
-const handleOnPress = (): void => {
-  // TODO: signup
-  router.replace('/memo/list')
+const handlePress = (email: string, password: string): void => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential.user.uid)
+      router.replace('/memo/list')
+    })
+    .catch((error) => {
+      const { code, message } = error
+      console.log(code, ': ', message)
+      Alert.alert('error', message as string)
+    })
 }
 
 const Signup = (): JSX.Element => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Sign up</Text>
-        <AuthInput type='email' />
-        <AuthInput type='password' />
-        <SquareButton label='Submit' onPress={handleOnPress}/>
+        <AuthInput type='email' value={email} onChangeText={setEmail} />
+        <AuthInput type='password' value={password} onChangeText={setPassword} />
+        <SquareButton label='Submit' onPress={() => { handlePress(email, password) }} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Link href='./login' asChild>
+          <Link href='./login' asChild replace>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in here!</Text>
             </TouchableOpacity>

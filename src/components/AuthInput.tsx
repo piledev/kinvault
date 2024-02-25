@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   TextInput, StyleSheet,
   type ViewStyle
@@ -6,19 +5,19 @@ import {
 
 interface Props {
   type: 'email' | 'password'
-  value?: string
+  value: string
+  onChangeText: React.Dispatch<React.SetStateAction<string>>
   style?: ViewStyle
 }
 
 const AuthInput = (props: Props): JSX.Element => {
-  const { type, value = '', style } = props
-  const [text, setText] = useState(value)
+  const { type, value, onChangeText, style } = props
   if (type === 'email') {
     return (
       <TextInput
         style={[styles.input, style]}
-        value={text}
-        onChangeText={setText}
+        value={value}
+        onChangeText={onChangeText}
         placeholder='Email Address'
         autoCapitalize='none'
         keyboardType='email-address'
@@ -29,8 +28,8 @@ const AuthInput = (props: Props): JSX.Element => {
     return (
       <TextInput
         style={[styles.input, style]}
-        value={text}
-        onChangeText={setText}
+        value={value}
+        onChangeText={onChangeText}
         placeholder='Password'
         autoCapitalize='none'
         keyboardType='ascii-capable'
