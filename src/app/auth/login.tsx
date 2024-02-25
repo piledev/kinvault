@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import SquareButton from '../../components/SquareButton'
-import CustomInput from '../../components/CustomInput'
+import AuthInput from '../../components/AuthInput'
 import { Link, router } from 'expo-router'
 
 const handleOnPress = (): void => {
@@ -14,8 +14,8 @@ const Login = (): JSX.Element => {
     <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Log in</Text>
-        <CustomInput placeholder='Email Address' keyboardType='email-address' textContentType='emailAddress'/>
-        <CustomInput placeholder='Password' secureTextEntry textContentType='password'/>
+        <AuthInput type='email' />
+        <AuthInput type='password' />
         <SquareButton label='Submit' onPress={handleOnPress} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
