@@ -1,7 +1,5 @@
-import {
-  Text, StyleSheet, TouchableOpacity,
-  type ViewStyle
-} from 'react-native'
+import { forwardRef } from 'react'
+import { Text, StyleSheet, TouchableOpacity, type ViewStyle } from 'react-native'
 
 interface Props {
   children?: React.ReactNode
@@ -9,14 +7,15 @@ interface Props {
   onPress?: () => void
 }
 
-const CircleButton = (props: Props): JSX.Element => {
+// eslint-disable-next-line react/display-name
+const CircleButton = forwardRef((props: Props, _): JSX.Element => {
   const { children, style, onPress } = props
   return (
     <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
     </TouchableOpacity>
   )
-}
+})
 
 const styles = StyleSheet.create({
   circleButton: {
