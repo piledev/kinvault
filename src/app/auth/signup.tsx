@@ -10,7 +10,6 @@ import { auth } from '../../config'
 const handlePress = (email: string, password: string): void => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log(userCredential.user.uid)
       router.replace('/memo/list')
     })
     .catch((error) => {

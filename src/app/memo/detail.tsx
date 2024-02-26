@@ -8,19 +8,19 @@ import Icon from '../../components/Icon'
 import { auth, db } from '../../config'
 import { type Memo } from '../../../types/memo'
 
-const handleOnPress = (): void => {
-  router.push('/memo/edit')
+const handlePress = (id: string): void => {
+  router.push({ pathname: '/memo/edit', params: { id } })
 }
 
 const Detail = (): JSX.Element => {
   const [memo, setMemo] = useState<Memo | null>(null)
   const params = useLocalSearchParams()
-  const { id } = params
+  const id = String(params.id)
 
   useEffect(() => {
     if (auth.currentUser === null) { return }
     const uid = auth.currentUser.uid
-    const ref = doc(db, `users/${uid}/memos`, String(id))
+    const ref = doc(db, `users/${uid}/memos`, id)
     const unsubscribe = onSnapshot(ref, (memoDoc) => {
       const { bodyText, updatedAt } = memoDoc.data() as Memo
       setMemo({
@@ -43,7 +43,7 @@ const Detail = (): JSX.Element => {
           {memo?.bodyText}
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 40, bottom: 'auto' }} onPress={handleOnPress}>
+      <CircleButton style={{ top: 40, bottom: 'auto' }} onPress={() => { handlePress(id) }}>
         <Icon name='quill' size={30} color='#ffffff'/>
       </CircleButton>
     </View>
