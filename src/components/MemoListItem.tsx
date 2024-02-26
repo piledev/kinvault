@@ -1,15 +1,38 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import Icon from './Icon'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Link } from 'expo-router'
 
+import Icon from './Icon'
 import { type Memo } from '../../types/memo'
+import { auth, db } from '../config'
+import { doc, deleteDoc } from 'firebase/firestore'
 interface Props {
   memo: Memo
 }
+
+const handlePress = (id: string): void => {
+  if (auth.currentUser === null) { return }
+  const uid = auth.currentUser.uid
+  const ref = doc(db, `users/${uid}/memos`, id)
+  Alert.alert('Delete Memo', 'Are you sure you want to delete this?', [
+    {
+      text: 'Cancel'
+    },
+    {
+      text: 'Delete',
+      style: 'destructive',
+      onPress: () => {
+        deleteDoc(ref)
+          .catch(() => {
+            Alert.alert("The memo couldn't be deleted.")
+          })
+      }
+    }
+  ])
+}
 const MemoListItem = (props: Props): JSX.Element | null => {
   const { memo } = props
-  const { bodyText, updatedAt } = memo
-  if (bodyText === null || updatedAt === null) { return null }
+  const { id, bodyText, updatedAt } = memo
+  if (id === null || bodyText === null || updatedAt === null) { return null }
 
   const dateString = updatedAt.toDate().toLocaleString('en-US')
   return (
@@ -27,7 +50,7 @@ const MemoListItem = (props: Props): JSX.Element | null => {
             <Text style={styles.memoListItemTitle} numberOfLines={1}>{bodyText}</Text>
             <Text style={styles.memoListItemDate}>{dateString}</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={ () => { handlePress(id) }}>
             <Icon name='delete' size={24} color='#b0b0b0'/>
           </TouchableOpacity>
         </TouchableOpacity>

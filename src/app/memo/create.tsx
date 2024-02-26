@@ -1,11 +1,11 @@
+import { useState } from 'react'
 import { View, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { router } from 'expo-router'
 import { Timestamp, addDoc, collection } from 'firebase/firestore'
-import { useState } from 'react'
 
+import Icon from '../../components/Icon'
 import CircleButton from '../../components/CircleButton'
 import { db, auth } from '../../config'
-import Icon from '../../components/Icon'
 
 const handlePress = (bodyText: string): void => {
   if (auth.currentUser === null) { return }

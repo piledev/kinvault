@@ -1,6 +1,6 @@
-import { Link, router } from 'expo-router'
 import { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { Link, router } from 'expo-router'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
 import SquareButton from '../../components/SquareButton'

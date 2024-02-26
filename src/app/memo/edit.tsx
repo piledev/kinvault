@@ -1,11 +1,11 @@
-import { router, useLocalSearchParams } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { Alert, View, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
-
-import CircleButton from '../../components/CircleButton'
-import Icon from '../../components/Icon'
-import { auth, db } from '../../config'
+import { router, useLocalSearchParams } from 'expo-router'
 import { Timestamp, doc, getDoc, setDoc } from 'firebase/firestore'
+
+import Icon from '../../components/Icon'
+import CircleButton from '../../components/CircleButton'
+import { auth, db } from '../../config'
 
 const handlePress = (id: string, bodyText: string): void => {
   if (auth.currentUser === null) { return }

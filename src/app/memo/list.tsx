@@ -3,14 +3,14 @@ import { View, StyleSheet, FlatList } from 'react-native'
 import { Link, router, useNavigation } from 'expo-router'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
+import Icon from '../../components/Icon'
 import MemoListItem from '../../components/MemoListItem'
 import CircleButton from '../../components/CircleButton'
-import Icon from '../../components/Icon'
 import LogoutButton from '../../components/LogoutButton'
 import { db, auth } from '../../config'
 import { type Memo } from '../../../types/memo'
 
-const handleOnPress = (): void => {
+const handlePress = (): void => {
   router.push('/memo/create')
 }
 
@@ -52,7 +52,7 @@ const List = (): JSX.Element => {
         />
       </View>
       <Link href='./create' asChild>
-        <CircleButton onPress={handleOnPress}>
+        <CircleButton onPress={handlePress}>
           <Icon name='plus' size={40} color='#ffffff'/>
         </CircleButton>
       </Link>
