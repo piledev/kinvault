@@ -1,33 +1,46 @@
+import { router, useLocalSearchParams } from 'expo-router'
+import { onSnapshot, doc } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
-import { router } from 'expo-router'
+import { auth, db } from '../../config'
+import { type Memo } from '../../../types/memo'
 
 const handleOnPress = (): void => {
   router.push('/memo/edit')
 }
 
 const Detail = (): JSX.Element => {
+  const [memo, setMemo] = useState<Memo | null>(null)
+  const params = useLocalSearchParams()
+  const { id } = params
+
+  useEffect(() => {
+    if (auth.currentUser === null) { return }
+    const uid = auth.currentUser.uid
+    const ref = doc(db, `users/${uid}/memos`, String(id))
+    const unsubscribe = onSnapshot(ref, (memoDoc) => {
+      const { bodyText, updatedAt } = memoDoc.data() as Memo
+      setMemo({
+        id: memoDoc.id,
+        bodyText,
+        updatedAt
+      })
+    })
+    return unsubscribe
+  }, [])
+
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoItem}>Kaimono-list</Text>
-        <Text style={styles.memoDate}>2024-02-19</Text>
+        <Text style={styles.memoItem} numberOfLines={1}>{memo?.bodyText}</Text>
+        <Text style={styles.memoDate}>{memo?.updatedAt.toDate().toLocaleString('en-US')}</Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoBodyText}>
-          This is a kaimono list.
-          I must buy ...
-          - [ ] milk
-          - [ ] pork
-          - [ ] pencil
-
-          So I must go to seven-eleven.
-          aa.
-          aaa.
-          aaaa.
-          aaaaa.
+          {memo?.bodyText}
         </Text>
       </ScrollView>
       <CircleButton style={{ top: 40, bottom: 'auto' }} onPress={handleOnPress}>
@@ -43,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   memoHeader: {
-    backgroundColor: '#98a8b8',
+    backgroundColor: '#586878',
     height: 84,
     paddingVertical: 24,
     paddingHorizontal: 19
@@ -60,10 +73,10 @@ const styles = StyleSheet.create({
     lineHeight: 16
   },
   memoBody: {
-    paddingVertical: 32,
     paddingHorizontal: 27
   },
   memoBodyText: {
+    paddingVertical: 32,
     color: '#000000'
   }
 })
