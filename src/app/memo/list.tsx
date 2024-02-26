@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import { Link, router, useNavigation } from 'expo-router'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
@@ -46,7 +46,10 @@ const List = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <View>
-        {memos.map((memo, index) => <MemoListItem key={index} memo={memo} />)}
+        <FlatList
+          data={memos}
+          renderItem={({ item }) => <MemoListItem memo={item} />}
+        />
       </View>
       <Link href='./create' asChild>
         <CircleButton onPress={handleOnPress}>

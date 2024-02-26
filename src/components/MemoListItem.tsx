@@ -5,16 +5,15 @@ import { Link } from 'expo-router'
 import { type Memo } from '../../types/memo'
 interface Props {
   memo: Memo
-  key: number
 }
 const MemoListItem = (props: Props): JSX.Element | null => {
-  const { memo, key } = props
+  const { memo } = props
   const { bodyText, updatedAt } = memo
   if (bodyText === null || updatedAt === null) { return null }
 
   const dateString = updatedAt.toDate().toLocaleString('en-US')
   return (
-    <Link key={key} href='/memo/detail' asChild>
+    <Link href='/memo/detail' asChild>
         <TouchableOpacity style={styles.memoListItem}>
           <View>
             <Text style={styles.memoListItemTitle} numberOfLines={1}>{bodyText}</Text>
