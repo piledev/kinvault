@@ -24,66 +24,66 @@ Kinvault.md is a markdown editor app for kinnies.
       2. Android Emulator
       3. Android SDK Platform-Tools
    1. Add Path
-      1. Open `~/.config/fish/config.fish`, and add the following statements.
-         ```config.fish
+      1. Open `~/.zshrc`, and add the following statements.
+         ```zsh
          # Android Studio
          export ANDROID_HOME="$HOME/Library/Android/sdk"
          export PATH="$ANDROID_HOME/platform-tools:$PATH"
          export PATH="$ANDROID_HOME/emulator:$PATH"
          ```
-      1. Check path on fish.
-         ```fish
+      1. Check path on zsh.
+         ```zsh
          echo $PATH
          adb --version
          ```
    1. Install Emulator.
       1. Open Android Studio, and [More Actions]-[Virtual Device Manager].
       2. Select [Pixel 7] and latest image.
-      3. Check the following command in fish.
-         ```fish
+      3. Check the following command in zsh.
+         ```zsh
          emulator -list-avds`
          ```
 1. Install watchman.
    Expo depends watchman.
 
-   ```fish
+   ```zsh
    brew install watchman
    ```
 1. Set up expo project.
 
-   ```shell
+   ```zsh
    cd ~/dev
-   nvm use lts
+   nvm use --lts
    npx create-expo-app --template
    # Choose `Blank(Typescript)`
    # Input name of app `kinvault`
    ```
 
 1. Start expo
-   ```shell
+   ```zsh
    cd kinvault
    npm start
    ```
 
 1. Install expo-router.
    1. Execute the following command. 
-      ```shell
+      ```zsh
       npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler
       ```
-   2. Add the following.
+   1. Add the following.
       1. src/app/index.tsx
       1. src/app/_layout.tsx
-   3. Delete the following.
+   1. Delete the following.
       1. App.tsx
-   4. Add `"expo": {"scheme": "kinvault"}` into app.json
+   1. Add `"expo": {"scheme": "kinvault"}` into app.json
 
 1. Install vector-icons and expo-font.
    1. Execute the following.
-   ```shell
-   npx expo install @expo/vector-icons
-   npx expo install expo-font
-   ```
-   Ref. https://oblador.github.io/react-native-vector-icons/
+      ```zsh
+      npx expo install @expo/vector-icons
+      npx expo install expo-font
+      ```
+      Ref. https://oblador.github.io/react-native-vector-icons/
 
    1. Download font file
       1. Open https://icomoon.io/app/#/select
@@ -100,9 +100,9 @@ Kinvault.md is a markdown editor app for kinnies.
 
 1. Install Firebase.
 
-```shell
-npx expo install firebase @react-native-async-storage/async-storage
-```
+   ```zsh
+   npx expo install firebase @react-native-async-storage/async-storage
+   ```
 
 
 ## Other installation.
